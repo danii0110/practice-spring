@@ -18,13 +18,16 @@ public class Ex1HelloJpaApplication {
 		tx.begin();
 
 		try {
-//			Member findMember = em.find(Member.class, 1L);
-			List<Member> result = em.createQuery("select m from Member as m", Member.class)
-					.getResultList();
-			for (Member member : result) {
-				System.out.println("member.getName() = " + member.getName());
-			}
 
+			//영속
+			Member member = em.find(Member.class, 150L);
+			member.setName("AAAAA");
+
+			em.clear();
+
+			Member member2 = em.find(Member.class, 150L);
+
+			System.out.println("=================");
 			tx.commit(); //반영해줌
 		} catch (Exception e) {
 			tx.rollback();
