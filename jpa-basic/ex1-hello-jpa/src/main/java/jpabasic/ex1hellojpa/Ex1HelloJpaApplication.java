@@ -18,10 +18,27 @@ public class Ex1HelloJpaApplication {
 		tx.begin();
 
 		try {
-			Member member = new Member();
-			member.setUsername("C");
+			//저장
+			Team team = new Team();
+			team.setName("TeamA");
+//			team.getMembers().add(member);
+			em.persist(team);
 
+			Member member = new Member();
+			member.setUsername("member1");
 			em.persist(member);
+
+			team.addMember(member);
+
+			em.flush();
+			em.clear();
+
+			Team findTeam = em.find(Team.class, team.getId());
+			List<Member> members = findTeam.getMembers();
+
+			for (Member m : members) {
+				System.out.println("m.getUsername() = " + m.getUsername());
+			}
 
 			tx.commit(); //반영해줌
 

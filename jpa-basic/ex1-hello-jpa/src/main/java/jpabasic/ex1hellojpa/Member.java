@@ -4,16 +4,20 @@ import jakarta.persistence.*;
 
 @Entity
 public class Member {
-    @Id //pk로 매핑(기본키 매핑)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "USERNAME")
     private String username;
 
+//    @Column(name = "TEAM_ID")
+//    private Long teamId;
 
-    //JPA는 기본 생성자가 있어야 됨
-    public Member() {}
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
     public Long getId() {
         return id;
@@ -29,5 +33,13 @@ public class Member {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
