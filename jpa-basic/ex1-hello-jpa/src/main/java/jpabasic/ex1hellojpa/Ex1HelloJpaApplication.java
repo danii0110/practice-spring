@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Ex1HelloJpaApplication {
@@ -19,15 +20,12 @@ public class Ex1HelloJpaApplication {
 
 		try {
 			Member member = new Member();
-			member.setUsername("member1");
+			member.setUsername("user1");
 
 			em.persist(member);
 
-			Team team = new Team();
-			team.setName("teamA");
-			team.getMembers().add(member);
-
-			em.persist(team);
+			em.flush();
+			em.clear();
 
 			tx.commit(); //반영해줌
 
