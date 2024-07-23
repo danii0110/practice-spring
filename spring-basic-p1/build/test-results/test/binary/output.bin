@@ -1,0 +1,2 @@
+¦policyMap = {fixDiscountPolicy=core.spring_basic_p1.discount.FixDiscountPolicy@907f2b7, rateDiscountPolicy=core.spring_basic_p1.discount.RateDiscountPolicy@435ce306}
+€policies = [core.spring_basic_p1.discount.FixDiscountPolicy@907f2b7, core.spring_basic_p1.discount.RateDiscountPolicy@435ce306]
