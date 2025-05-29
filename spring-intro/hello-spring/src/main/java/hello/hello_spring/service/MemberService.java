@@ -3,10 +3,12 @@ package hello.hello_spring.service;
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemberRepository;
 import hello.hello_spring.repository.MemoryMemberRepository;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
 //    private final MemberRepository memberRepo = new MemoryMemberRepository();
     private final MemberRepository memberRepo;
